@@ -43,7 +43,7 @@ def resample_img(image_path, out_image_path, segmentation_or_image,
     
     output_image = out_image_path +"/new_" +segmentation_or_image + ".nii"
     
-    return sitk.WriteImage(image, output_image)
+    sitk.WriteImage(image, output_image)
 
 
 
@@ -70,5 +70,5 @@ out_image_path = r"D:\Uniklinik\kits19\data\case_00001"
 resampled_sitk_img = resample_img(image_path = image_path, 
                                   out_image_path=out_image_path,
                                   segmentation_or_image = "segmentation",
-                                  out_spacing=[2.0, 2.0, 2.0], is_label=False)
+                                  out_spacing=[2.0, 2.0, 2.0], is_label=True)
 
