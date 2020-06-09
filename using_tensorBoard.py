@@ -8,7 +8,7 @@ Created on Tue Jun  2 19:44:40 2020
 '''
 To use Tensorboard to view result do the following 
 
-0.Type this in the powershell, don;t forget to change the path
+0.Type this in the powershell, don't forget to change the path
 
 tensorboard --logdir=C:\Users\Youpele\Downloads\tensorboard\trainSessionWithValidTiny\train --host=127.0.0.1
 
