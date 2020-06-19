@@ -6,8 +6,8 @@ Created on Thu May 14 19:52:53 2020
 """
 
 import tensorflow as tf 
-tf.enable_eager_execution()
-print(tf.reduce_sum(tf.random_normal([1000, 1000])))
+tf.compat.v1.enable_eager_execution()
+print(tf.reduce_sum(tf.random.normal([1000, 1000])))
 
 
 
@@ -97,6 +97,57 @@ class RunFile:
         
         
         
-        
-        
+    def deepmedic_fineTuning (model_path, train_path, model_ckpt_path, 
+                              deepMedicRun_path = "C:/Users/michaely/Documents/deepmedic-master/deepmedic-master/deepMedicRun",
+                              wdir='C:/Users/michaely/Documents/deepmedic-master/deepmedic-master',
+                              gpu = '-dev cuda0' ):
+        '''
+        Fine tuning.
 
+        Parameters
+        ----------
+        model_path : String
+            Path to the model.
+        train_path : String
+            Path to the train Config file.
+        model_ckpt_path : String
+            Path to the model.ckpt file.
+        deepMedicRun_path : String, optional
+            Path to the deepMedicRun file.. The default is "C:/Users/michaely/Documents/deepmedic-master/deepmedic-master/deepMedicRun".
+        wdir : String, optional
+            Path to the deepmedic-master folder. The default is 'C:/Users/michaely/Documents/deepmedic-master/deepmedic-master'.
+        gpu : String, optional
+            GPU. The default is '-dev cuda0'.
+
+        Returns
+        -------
+        None.
+
+        '''
+        
+        transferLearning = '-resetopt'
+        model = '-model ' + model_path
+        train = '-train ' + train_path
+        load = '-load ' + model_ckpt_path
+        args = model + ' ' + train + ' ' + load + ' ' + transferLearning + ' ' + gpu
+        args = args.replace('\\', "/")
+        
+        runfile(deepMedicRun_path,
+                args = args,
+                wdir= wdir)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+# ./deepMedicRun -model ./examples/configFiles/deepMedic/model/modelConfig.cfg \
+#                -train ./examples/configFiles/deepMedic/train/trainConfigForRefinement.cfg \
+#                -load ./path/to/pretrained/network/filename.DATE+TIME.model.ckpt \
+#                -resetopt \
+#                -dev cuda0
