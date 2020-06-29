@@ -54,7 +54,8 @@ class pickT2TSEFile():
                     if "LO" in patient_image:
                         lo_im = patient_image
                         if "T2" in lo_im:
-                            lo_prefix = patient_image[0:3]
+                            # lo_prefix = patient_image[0:3]
+                            lo_prefix = patient_image.split("_")[0]
                             lo_prefix_dict[patient] = lo_prefix
                             
         return lo_prefix_dict
