@@ -116,7 +116,7 @@ class pickT2TSEFile():
     @staticmethod
     def get_GraSe_info(prostate_path):
         '''
-        
+        Extract the necessary information about GraSe files of all the patients.
 
         Parameters
         ----------
