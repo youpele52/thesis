@@ -95,6 +95,50 @@ class RunFile:
                 args = args,
                 wdir= wdir)
         
+    def deepmedic_resumeTraining(model_path, train_path, model_ckpt_path, 
+                                   deepMedicRun_path = "C:/Users/michaely/Documents/deepmedic-master/deepmedic-master/deepMedicRun",
+                                   wdir='C:/Users/michaely/Documents/deepmedic-master/deepmedic-master',
+                                   gpu = '-dev cuda0'):
+        """
+        Resuming an Interrupted Training Session
+
+
+
+        Parameters
+        ----------
+        model_path : String
+            Path to the model.
+        train_path : String
+            Path to the train Config file.
+        model_ckpt_path : TYPE
+            Path to the model.ckpt saved file from which training will resume.
+        deepMedicRun_path : String, optional
+            Path to the deepMedicRun file. The default is "C:/Users/michaely/Documents/deepmedic-master/deepmedic-master/deepMedicRun".
+        wdir : String, optional
+            Path to the deepmedic-master folder. The default is 'C:/Users/michaely/Documents/deepmedic-master/deepmedic-master'.
+        gpu : TYPE, optional
+            GPU. The default is '-dev cuda0'.
+
+        Returns
+        -------
+        None.
+
+        """
+        
+        model = '-model ' + model_path
+        train = '-train ' + train_path
+        load = '-load ' + model_ckpt_path
+        args = model + ' ' + train + ' ' + load + ' ' +gpu
+        args = args.replace('\\', "/")
+        
+        runfile(deepMedicRun_path,
+                args = args,
+                wdir= wdir)
+        
+        
+        
+        
+        
         
         
     def deepmedic_fineTuning (model_path, train_path, model_ckpt_path, 
