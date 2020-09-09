@@ -10,7 +10,7 @@ from datetime import datetime
 import os
 
 class Create_CFGs:     
-    def create_cfgs_plus_roi(project_name="kits19"):
+    def create_cfgs_plus_roi(train_set, val_set, val_pred_set, test_set, test_pred_set, project_name="kits19" ):
         now = datetime.now()
         todays_date = now.strftime("%d%m%Y")
         
@@ -71,7 +71,7 @@ class Create_CFGs:
             test_NamesOfPredictions =test_pred_set
             f.writelines("%s\n" % line for line in test_NamesOfPredictions) 
             
-    def create_cfgs_no_roi(project_name="kits19"):
+    def create_cfgs_no_roi(train_set, val_set, val_pred_set, test_set, test_pred_set, project_name="kits19" ):
         now = datetime.now()
         todays_date = now.strftime("%d%m%Y")
         
@@ -140,7 +140,7 @@ class Create_CFGs:
     
     
     
-Create_CFGs.create_cfgs_plus_roi()
+# Create_CFGs.create_cfgs_plus_roi()
     
     
     
