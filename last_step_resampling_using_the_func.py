@@ -15,17 +15,6 @@ from last_step_of_resampling_steine_phlebolith import last_step_resampling
 imagedir_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\DICOM_Niere\DICOM"
 imagedir_list = os.listdir(imagedir_path)
 
-# Phlebolithen_dir_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Phlebolithen"
-# Phlebolithen_dir_list = os.listdir(Phlebolithen_dir_path)
-# Steine_dir_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Steine"
-# Steine_dir_list = os.listdir(Steine_dir_path)
-# Steine_Phlebolith_dir_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Steine+Phlebolithen"
-# Steine_Phlebolith_dir_list = os.listdir(Steine_Phlebolith_dir_path)
-
-
-
-
-
 
 # Phlebolithen
 dataset_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Phlebolithen"
