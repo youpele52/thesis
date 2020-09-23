@@ -81,11 +81,11 @@ class Windowing():
 
 # Testing
 
-Windowing.windowing(image_path="/Volumes/Youpele_HD/Uniklinik/nnUNet_data/nnUNet_raw_data_base/nnUNet_raw_data/Task11_Kits19/imagesTr/case_00200_resampled_image.nii.gz",
-                    window_center = 90, 
-                    window_width= 1600, 
-                    export_dir = "/Users/youpele/Desktop", 
-                    export_name = "windowed_image_1.nii.gz")
+# Windowing.windowing(image_path="/Volumes/Youpele_HD/Uniklinik/nnUNet_data/nnUNet_raw_data_base/nnUNet_raw_data/Task11_Kits19/imagesTr/case_00200_resampled_image.nii.gz",
+#                     window_center = 90, 
+#                     window_width= 1600, 
+#                     export_dir = "/Users/youpele/Desktop", 
+#                     export_name = "windowed_image_1.nii.gz")
 
 
 # Windowing.display_views("/Volumes/Youpele_HD/Uniklinik/nnUNet_data/nnUNet_raw_data_base/nnUNet_raw_data/Task11_Kits19/imagesTr/case_00200_resampled_image.nii.gz")
