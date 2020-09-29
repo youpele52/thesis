@@ -2,7 +2,7 @@
 """
 Created on Tue Sep 29 17:39:13 2020
 
-@author: Youpele & Kautenja
+@authors:  Kautenja & Youpele
 """
 
 import os
