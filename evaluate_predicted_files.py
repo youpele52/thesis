@@ -108,7 +108,7 @@ class EvaluatePredictedFiles:
         gtLabels_path = {}
         for content1 in read_GtLabels:
             path = content1[0]
-            patientID1 = path.split("\\")[-2]
+            patientID1 = path.split("/")[-2]
             gtLabels_path[patientID1] = path
             
             for content2 in os.listdir(predictions_dir):
