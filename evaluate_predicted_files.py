@@ -24,18 +24,21 @@ class EvaluatePredictedFiles:
     def evaluate_predicted_files_1(predictions_dir, ground_truth_dir,pred_nametag, gt_nametag):
         """
         Creates an excel file as well as returns a DataFrame containing evaluation metrics such as:
-            Dice coefficient, Accuracy, Sensitivity, Specificity, TP, TN, FP, and FN.
+        Dice coefficient, Accuracy, Sensitivity, Specificity, TP, TN, FP, and FN.
+            
+        Note:
+            All the predicted files should be inside the given predictions_dir, and GT files in ground_truth_dir as well.
             
         Parameters
         ----------
-        predictions_dir : TYPE
-            DESCRIPTION.
-        ground_truth_dir : TYPE
-            DESCRIPTION.
-        pred_nametag : TYPE
-            DESCRIPTION.
-        gt_nametag : TYPE
-            DESCRIPTION.
+        predictions_dir : str
+            Path to the prediction directory.
+        ground_truth_dir : str
+            Path to the GT directory.
+        pred_nametag : str
+            A filter to search for the predicted files in their directory.
+        gt_nametag : str
+            A filter to search for the GT files in their directory.
 
         Returns
         -------
@@ -77,8 +80,8 @@ class EvaluatePredictedFiles:
         """
         Optimized for DeepMedic
         
-        Creates an excel file as well as returns a DataFrame containing evaluation metrics such as:
-            Dice coefficient, Accuracy, Sensitivity, Specificity, TP, TN, FP, and FN.
+        Creates an excel file as well as returns a DataFrame containing evaluation metrics such as: 
+        Dice coefficient, Accuracy, Sensitivity, Specificity, TP, TN, FP, and FN.
         
         Parameters
         ----------
