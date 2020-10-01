@@ -32,7 +32,7 @@ class EvaluatePredictedFiles:
         Parameters
         ----------
         predictions_dir : str
-            Path to the prediction directory.
+            Path to the prediction directory. The excel file shall be saved here.
         ground_truth_dir : str
             Path to the GT directory.
         pred_nametag : str
@@ -86,7 +86,7 @@ class EvaluatePredictedFiles:
         Parameters
         ----------
         predictions_dir : str
-            Path to the prediction directory.
+            Path to the prediction directory. The excel file shall be saved here.
         ground_truth_dir : str
             Path to the GT directory or any other directory of choice. 
             Only used for saving binary images.
