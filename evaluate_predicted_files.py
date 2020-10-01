@@ -91,7 +91,7 @@ class EvaluatePredictedFiles:
             A filter to search for the predicted files in their directory.
             Required if there are other files in the directory.
         gtLabels_ConfigFile : str
-            Path to the gtLabels Config file .
+            Path to the TEST gtLabels Config file .
 
         Returns
         -------
