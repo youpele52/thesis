@@ -216,6 +216,9 @@ class EvaluatePredictedFiles:
             A filter to search for the predicted files in their directory.
         gt_nametag : str
             A filter to search for the GT files in their directory.
+        patientID_position: int
+            Position of the patient ID eg (case_00001) in path names in the gtLabels_ConfigFile.
+            
         Returns
         -------
         df_merged : DataFrame containing evaluation metrics such as:
@@ -271,6 +274,11 @@ class EvaluatePredictedFiles:
             Required if there are other files in the directory.
         gtLabels_ConfigFile : str
             Path to the TEST gtLabels Config file .
+        patientID_position: int
+            Position of the patient ID eg (case_00001) in path names in the gtLabels_ConfigFile.
+        path_delimiter: str
+            Depends on how your paths are named in the gtLabels_ConfigFile. "/" for mac/linux based systems and "\\" for windows.
+            
         Returns
         -------
         df_merged : DataFrame containing evaluation metrics such as:
