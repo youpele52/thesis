@@ -198,7 +198,7 @@ class EvaluatePredictedFiles:
         return  df
     
     
-    def evaluate_predicted_files_1(predictions_dir, ground_truth_dir,pred_nametag, gt_nametag):
+    def evaluate_predicted_files_1(predictions_dir, ground_truth_dir,pred_nametag, gt_nametag, patientID_position = 1):
         """
         Creates an excel file as well as returns a DataFrame containing evaluation metrics such as:
         Dice coefficient, Accuracy, Sensitivity, Specificity, TP, TN, FP, and FN.
@@ -224,15 +224,15 @@ class EvaluatePredictedFiles:
         df_list = []
         for content1 in os.listdir(predictions_dir):
             if pred_nametag in content1:
-                patientID1 = int(content1.split("_")[1])
+                patientID1 = int(content1.split("_")[patientID_position])
                 for content2 in os.listdir(ground_truth_dir):
                     if gt_nametag in content2:
-                        patientID2 = int(content2.split("_")[1])
+                        patientID2 = int(content2.split("_")[patientID_position])
                         if patientID1 == patientID2:
                             predicted_file = join(predictions_dir, content1)
                             GT_file = join(ground_truth_dir, content2)
                             # print(str(patientID1) + "\n" + predicted_file + "\n" + GT_file + "\n\n" )
-                            result = evaluating_segmentation_result(predictions = predicted_file, 
+                            result = EvaluatePredictedFiles.evaluating_segmentation_result(predictions = predicted_file, 
                                                                     ground_truth = GT_file, 
                                                                     pred_dir = predictions_dir, 
                                                                     gt_dir = ground_truth_dir)
@@ -251,7 +251,8 @@ class EvaluatePredictedFiles:
                             
         
         
-    def evaluate_predicted_files_X(predictions_dir, ground_truth_dir,pred_nametag, gtLabels_ConfigFile):
+    def evaluate_predicted_files_X(predictions_dir, ground_truth_dir,pred_nametag, gtLabels_ConfigFile,  
+                                   patientID_position = -2, path_delimiter = "\\"):
         """
         Optimized for DeepMedic
         
@@ -281,7 +282,7 @@ class EvaluatePredictedFiles:
         gtLabels_path = {}
         for content1 in read_GtLabels:
             path = content1[0]
-            patientID1 = path.split("/")[-2]
+            patientID1 = path.split(path_delimiter)[patientID_position]
             gtLabels_path[patientID1] = path
             
             for content2 in os.listdir(predictions_dir):
@@ -290,7 +291,7 @@ class EvaluatePredictedFiles:
                         predicted_file = join(predictions_dir, content2)
                         GT_file = gtLabels_path[patientID1]
                         
-                        result = evaluating_segmentation_result(predictions = predicted_file, 
+                        result = EvaluatePredictedFiles.evaluating_segmentation_result(predictions = predicted_file, 
                                                                             ground_truth = GT_file, 
                                                                             pred_dir = predictions_dir, 
                                                                             gt_dir = ground_truth_dir)
