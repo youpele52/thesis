@@ -85,7 +85,7 @@ class EvaluatePredictedFiles:
         def evaluation_metrics (predictions, ground_truth,
                                 negative: int=0.0,
                                 positive: int=1.0,
-                                normalize: bool=True):
+                                normalize: bool=False):
             """
             
             Parameters
