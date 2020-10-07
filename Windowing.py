@@ -20,26 +20,26 @@ class Windowing():
         medical_image = nib.load(image_path)
         image = medical_image.get_fdata()
         
-        # Transform the pixel values to the Hounsfield units
-        def transform_to_hu(medical_image, image):
-            intercept = medical_image.dataobj.inter #RescaleIntercept
-            slope = medical_image.dataobj.slope #RescaleSlope
-            hu_image = image * slope + intercept
-            return hu_image
+        # # Transform the pixel values to the Hounsfield units
+        # def transform_to_hu(medical_image, image):
+        #     intercept = medical_image.dataobj.inter #RescaleIntercept
+        #     slope = medical_image.dataobj.slope #RescaleSlope
+        #     hu_image = image * slope + intercept
+        #     return hu_image
         
-        # Window the image
-        def window_image(image, window_center, window_width):
-            img_min = window_center - window_width // 2
-            img_max = window_center + window_width // 2
-            window_image = image.copy()
-            window_image[window_image < img_min] = img_min
-            window_image[window_image > img_max] = img_max
+        # # Window the image
+        # def window_image(image, window_center, window_width):
+        #     img_min = window_center - window_width // 2
+        #     img_max = window_center + window_width // 2
+        #     window_image = image.copy()
+        #     window_image[window_image < img_min] = img_min
+        #     window_image[window_image > img_max] = img_max
             
-            return window_image
+        #     return window_image
         
-        print("Processing:", image_path)
-        hu_image = transform_to_hu(medical_image= medical_image, image = image)
-        window_the_image = window_image(image = hu_image, 
+        # print("Processing:", image_path)
+        # hu_image = transform_to_hu(medical_image= medical_image, image = image)
+        window_the_image = window_image(image = image, 
                                         window_center = window_center, 
                                         window_width  = window_width)
         func = nib.load(image_path)
