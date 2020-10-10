@@ -13,8 +13,8 @@ print(tf.reduce_sum(tf.random.normal([1000, 1000])))
 
 class RunFile:
     '''
-    This is python in-IDE as oppose to running DeepMedic
-    software in the terminal. 
+    This is python in-IDE as opposed to running DeepMedic
+    software on the terminal. 
     Refer to DeepMedic github page for documentations.
     
     https://github.com/deepmedic/deepmedic#12-installation
