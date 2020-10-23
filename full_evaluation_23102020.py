@@ -246,7 +246,7 @@ class FullEvaluation:
                     if gt_nametag in content2:
                         patientID2 = int(content2.split("_")[patientID_position])
                         if patientID1 == patientID2:
-                            fname = patientID1
+                            fname = str(patientID1)
                             predicted_file = join(predictions_dir, content1)
                             GT_file = join(ground_truth_dir, content2)
                             
@@ -280,7 +280,7 @@ class FullEvaluation:
             
             for content2 in os.listdir(predictions_dir):
                 if patientID1 in content2:
-                    fname = patientID1
+                    fname = str(patientID1)
                     if pred_nametag in content2:
                         predicted_file = join(predictions_dir, content2)
                         GT_file = gtLabels_path[patientID1]
