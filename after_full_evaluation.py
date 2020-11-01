@@ -14,7 +14,7 @@ join = os.path.join
 
 
 
-def after_full_evaluation(predict_test_result, test_cases, export_dir, delimeter = "/", delimeter2 = "/"):
+def after_full_evaluation(predict_test_result, test_cases, export_dir, test_session_name, delimeter = "/", delimeter2 = "/"):
     
     now = datetime.now()
     date = now.strftime("%d%m%Y")
@@ -109,7 +109,7 @@ def after_full_evaluation(predict_test_result, test_cases, export_dir, delimeter
         listed2_merged.index = range(0,len(listed2_merged), 1)
         
         # Saving the generated info into an excel file
-        with pd.ExcelWriter(join(export_dir,'after_full_evaluation_'+ date +'.xlsx')) as writer:
+        with pd.ExcelWriter(join(export_dir,test_session_name + '_after_full_evaluation_'+ date +'.xlsx')) as writer:
             listed1_merged.to_excel(writer, sheet_name = 'label_1')
             listed2_merged.to_excel(writer, sheet_name = 'label_2')
         
