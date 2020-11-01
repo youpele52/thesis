@@ -34,65 +34,74 @@ def after_full_evaluation(predict_test_result, test_cases, export_dir, delimeter
                 case_ID2 =  int(file_path.split(delimeter2)[-1].split("_")[1])
                 
                 if case_ID1 == case_ID2:
-                    # High Dice
-                    high_dice_df = pd.read_excel(file_path,sheet_name = 'Detected', usecols = "C" )
-                    # GT Volume
-                    gt_volume = pd.read_excel(file_path,sheet_name = 'Detected', usecols = 'p' )
-                    # Missed lesions
                     try:
-                        missed = pd.read_excel(file_path,sheet_name = 'Missed', usecols = 'B' )
+                        # High Dice
+                        high_dice_df = pd.read_excel(file_path,sheet_name = 'Detected', usecols = "C" )
+                        # GT Volume
+                        gt_volume = pd.read_excel(file_path,sheet_name = 'Detected', usecols = 'p' )
+                        # Missed lesions
+                        try:
+                            missed = pd.read_excel(file_path,sheet_name = 'Missed', usecols = 'B' )
+                        except:
+                            missed = pd.DataFrame(columns = ['Volume GT'])
+                            print("case",case_ID2, "'label_1' does not have any missed lesions!")
+                        # False Positives    
+                        false_positive = pd.read_excel(file_path,sheet_name = 'FalsePositives', usecols = 'B' )
+                        if false_positive.shape[0]>0:
+                            pass
+                        else:
+                            false_positive = pd.DataFrame( columns = ['Volume ML'] )
+                            print("case", case_ID2, "'label_1' does not have any false positive!")
+                            
+                        df1 = pd.DataFrame({"Case ID": case_ID2, "Global Dice": dice_label_1,
+                                            "High Dice":  high_dice_df ["Dice"], 
+                                            'Number of Missed Lesions':missed.shape[0],
+                                            'Average Volume of Missed Lesions': missed['Volume GT'].mean(),
+                                            'Number of FP': false_positive.shape[0],
+                                            'Average Volume of FP': false_positive['Volume ML'].mean(),
+                                            'GT Volume': gt_volume['Volume GT']})
+                        listed1.append(df1)
                     except:
-                        missed = pd.DataFrame(columns = ['Volume GT'])
-                        print("case",case_ID2, "'label_1' does not have any missed lesions!")
-                    # False Positives    
-                    false_positive = pd.read_excel(file_path,sheet_name = 'FalsePositives', usecols = 'B' )
-                    if false_positive.shape[0]>0:
-                        pass
-                    else:
-                        false_positive = pd.DataFrame( columns = ['Volume ML'] )
-                        print("case", case_ID2, "'label_1' does not have any false positive!")
-                        
-                    df1 = pd.DataFrame({"Case ID": case_ID2, "Global Dice": dice_label_1,
-                                        "High Dice":  high_dice_df ["Dice"], 
-                                        'Number of Missed Lesions':missed.shape[0],
-                                        'Average Volume of Missed Lesions': missed['Volume GT'].mean(),
-                                        'Number of FP': false_positive.shape[0],
-                                        'Average Volume of FP': false_positive['Volume ML'].mean(),
-                                        'GT Volume': gt_volume['Volume GT']})
-                    listed1.append(df1)
-                    
+                        df1 = pd.DataFrame()
+                        listed1.append(df1)
+                        print("case",case_ID2, "'label_1' excel file is empty!")
                 
             elif 'label_2' in content:
                 file_path = join(test_cases,content )
                 case_ID2 =  int(file_path.split(delimeter2)[-1].split("_")[1])
                 
                 if case_ID1 == case_ID2:
-                    # High Dice
-                    high_dice_df = pd.read_excel(file_path,sheet_name = 'Detected', usecols = "C" )
-                    # GT Volume
-                    gt_volume = pd.read_excel(file_path,sheet_name = 'Detected', usecols = 'p' )
-                    # Missed lesions
                     try:
-                        missed = pd.read_excel(file_path,sheet_name = 'Missed', usecols = 'B' )
+                        # High Dice
+                        high_dice_df = pd.read_excel(file_path,sheet_name = 'Detected', usecols = "C" )
+                        # GT Volume
+                        gt_volume = pd.read_excel(file_path,sheet_name = 'Detected', usecols = 'p' )
+                        # Missed lesions
+                        try:
+                            missed = pd.read_excel(file_path,sheet_name = 'Missed', usecols = 'B' )
+                        except:
+                            missed = pd.DataFrame(columns = ['Volume GT'])
+                            print("case",case_ID2, "'label_2' does not have any missed lesions!")
+                        # False Positives    
+                        false_positive = pd.read_excel(file_path,sheet_name = 'FalsePositives', usecols = 'B' )
+                        if false_positive.shape[0]>0:
+                            pass
+                        else:
+                            false_positive = pd.DataFrame( columns = ['Volume ML'] )
+                            print("case", case_ID2, "'label_2' does not have any false positive!")
+                            
+                        df2 = pd.DataFrame({"Case ID": case_ID2, "Global Dice": dice_label_2,
+                                            "High Dice":  high_dice_df ["Dice"], 
+                                            'Number of Missed Lesions':missed.shape[0],
+                                            'Average Volume of Missed Lesions': missed['Volume GT'].mean(),
+                                            'Number of FP': false_positive.shape[0],
+                                            'Average Volume of FP': false_positive['Volume ML'].mean(),
+                                            'GT Volume': gt_volume['Volume GT']})
+                        listed2.append(df2)
                     except:
-                        missed = pd.DataFrame(columns = ['Volume GT'])
-                        print("case",case_ID2, "'label_2' does not have any missed lesions!")
-                    # False Positives    
-                    false_positive = pd.read_excel(file_path,sheet_name = 'FalsePositives', usecols = 'B' )
-                    if false_positive.shape[0]>0:
-                        pass
-                    else:
-                        false_positive = pd.DataFrame( columns = ['Volume ML'] )
-                        print("case", case_ID2, "'label_2' does not have any false positive!")
-                        
-                    df2 = pd.DataFrame({"Case ID": case_ID2, "Global Dice": dice_label_2,
-                                        "High Dice":  high_dice_df ["Dice"], 
-                                        'Number of Missed Lesions':missed.shape[0],
-                                        'Average Volume of Missed Lesions': missed['Volume GT'].mean(),
-                                        'Number of FP': false_positive.shape[0],
-                                        'Average Volume of FP': false_positive['Volume ML'].mean(),
-                                        'GT Volume': gt_volume['Volume GT']})
-                    listed2.append(df2)
+                        df2 = pd.DataFrame()
+                        listed2.append(df2)
+                        print("case",case_ID2, "'label_2' excel file is empty!")
 
         listed1_merged = pd.concat(listed1)        
         listed1_merged.index = range(0,len(listed1_merged), 1)
