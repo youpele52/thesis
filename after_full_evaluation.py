@@ -14,7 +14,7 @@ join = os.path.join
 
 
 
-def after_full_evaluation(predict_test_result, test_cases, export_dir, delimeter = "/"):
+def after_full_evaluation(predict_test_result, test_cases, export_dir, delimeter = "/", delimeter2 = "/"):
     
     now = datetime.now()
     date = now.strftime("%d%m%Y")
@@ -45,7 +45,7 @@ def after_full_evaluation(predict_test_result, test_cases, export_dir, delimeter
                         missed = pd.DataFrame(columns = ['Volume GT'])
                         print("case",case_ID2, "'label_1' does not have any missed lesions!")
                     # False Positives    
-                    false_positive = pd.read_excel(case_2_label_1,sheet_name = 'FalsePositives', usecols = 'B' )
+                    false_positive = pd.read_excel(file_path,sheet_name = 'FalsePositives', usecols = 'B' )
                     if false_positive.shape[0]>0:
                         pass
                     else:
@@ -78,14 +78,14 @@ def after_full_evaluation(predict_test_result, test_cases, export_dir, delimeter
                         missed = pd.DataFrame(columns = ['Volume GT'])
                         print("case",case_ID2, "'label_2' does not have any missed lesions!")
                     # False Positives    
-                    false_positive = pd.read_excel(case_2_label_1,sheet_name = 'FalsePositives', usecols = 'B' )
+                    false_positive = pd.read_excel(file_path,sheet_name = 'FalsePositives', usecols = 'B' )
                     if false_positive.shape[0]>0:
                         pass
                     else:
                         false_positive = pd.DataFrame( columns = ['Volume ML'] )
                         print("case", case_ID2, "'label_2' does not have any false positive!")
                         
-                    df2 = pd.DataFrame({"Case ID": case_ID2, "Global Dice": dice_label_1,
+                    df2 = pd.DataFrame({"Case ID": case_ID2, "Global Dice": dice_label_2,
                                         "High Dice":  high_dice_df ["Dice"], 
                                         'Number of Missed Lesions':missed.shape[0],
                                         'Average Volume of Missed Lesions': missed['Volume GT'].mean(),
