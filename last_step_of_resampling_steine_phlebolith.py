@@ -8,6 +8,8 @@ Created on Mon Sep 14 15:25:01 2020
 import SimpleITK as sitk
 import os
 
+# used for resampling 4D images made up of two 3D images
+
 def last_step_resampling (out_image_path, input_image, reference_image):
     
     itk_image_input = sitk.ReadImage(input_image)

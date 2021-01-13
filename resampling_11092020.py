@@ -11,22 +11,28 @@ from skimage.measure import regionprops
 import SimpleITK as sitk
 import os
 import sys
-from datetime import datetime
-sys.path.append(r"C:\Users\michaely\Documents\hiwi\Scripts")
-from resample_spacing import resample
+# from datetime import datetime
+sys.path.append(r"C:\Users\michaely\Documents\hiwi\Scripts\stones_phlebolith")
+from resample_spacing_for_stone_and_phlebolith import resample
 from get_info import get_info
 
 
 
+#Seperates a 4D image into the two 3D images which makes it up
 
-Phlebolithen_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Phlebolithen"
-# Phlebolithen_list = os.listdir(Phlebolithen_path)
+# Phlebolithen
+dataset_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Phlebolithen"
 
+# Steine
+dataset_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Steine"
 
+# Steine+Phlebolithen
 dataset_path = r"C:\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\3DSlicer_Niere\Steine+Phlebolithen"
+
+
+
+
 dataset_list = os.listdir(dataset_path)
-
-
 for case in dataset_list:
     case_path = os.path.join(dataset_path, case)
     case_list = os.listdir(case_path)
@@ -50,11 +56,15 @@ for case in dataset_list:
             data3D_label2=data[:,:,:,1]
             
             image3D_label1 = sitk.GetImageFromArray(data3D_label1)
+            image3D_label1.SetSpacing(image.GetSpacing())
+            image3D_label1.SetOrigin(image.GetOrigin())
             writer = sitk.ImageFileWriter()
             writer.SetFileName(image3D_label1_path)
             writer.Execute(image3D_label1)
             
             image3D_label2 = sitk.GetImageFromArray(data3D_label2)
+            image3D_label2.SetSpacing(image.GetSpacing())
+            image3D_label2.SetOrigin(image.GetOrigin())
             writer = sitk.ImageFileWriter()
             writer.SetFileName(image3D_label2_path)
             writer.Execute(image3D_label2)
@@ -81,7 +91,7 @@ for case in dataset_list:
             
             # writing the combined image
             combine_image = 1 * image1 + 2 * image2
-            combine_image_path = os.path.join(case_path, "combine_image.nii.gz")
+            combine_image_path = os.path.join(case_path, "combine_image.nii")
             writer = sitk.ImageFileWriter()
             writer.SetFileName(combine_image_path)
             writer.Execute(combine_image)
@@ -103,6 +113,6 @@ get_info(seg_path_for_check)
 
             
             
-
+get_info(r"\Users\michaely\Documents\hiwi\DeepMedic Stuff\Convert to nifti 20052020\DICOM_Niere\DICOM\P106\resampled_image.nii")
             
 
