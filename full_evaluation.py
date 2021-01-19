@@ -3,10 +3,8 @@
 """
 Created on Tue Oct 20 18:55:51 2020
 
-@author: liliana & youpele
+@author: liliana, youpele & mirjam
 
-extended: mirjam
-region props table for all volumes, updated output in Excel files
 """
 
 import os
