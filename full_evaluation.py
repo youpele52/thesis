@@ -3,8 +3,10 @@
 """
 Created on Tue Oct 20 18:55:51 2020
 
-@author: liliana, youpele & mirjam
+@author: liliana & youpele
 
+extended: mirjam
+region props table for all volumes, updated output in Excel files
 """
 
 import os
@@ -383,7 +385,7 @@ class FullEvaluation:
             print("\n\nERROR ENCOUNTERED WHILE COMPILING RESULT FOR label = 1!!:\n", err)
             DDMMYYYY=datetime.date.today()
             todaysdate =str(DDMMYYYY.day)+str(DDMMYYYY.month)+str(DDMMYYYY.year)
-            filename = fname + "_" + todaysdate + ".xlsx"
+            filename = fname +  "_label_1_"  + todaysdate + ".xlsx"
             writer=pd.ExcelWriter(join(pred_dir, filename),engine='xlsxwriter')
             writer.save()
 
@@ -398,7 +400,7 @@ class FullEvaluation:
             print("\n\nERROR ENCOUNTERED WHILE COMPILING RESULT FOR label = 2!!\n", err)
             DDMMYYYY=datetime.date.today()
             todaysdate =str(DDMMYYYY.day)+str(DDMMYYYY.month)+str(DDMMYYYY.year)
-            filename = fname + "_" + todaysdate + ".xlsx"
+            filename = fname + "_label_2_" + todaysdate + ".xlsx"
             writer=pd.ExcelWriter(join(pred_dir, filename),engine='xlsxwriter')
             writer.save()
 
