@@ -67,7 +67,7 @@ def analyze_volume_thresholds_results(results_dir, volume_threshold_2,test_sessi
     df_merged = pd.concat(df_list) 
     df_merged.index = range(0,len(df_merged), 1)
     
-    with pd.ExcelWriter(join(results_dir,test_session_name + '_threshold_analysis_'+ date +'.xlsx')) as writer:
+    with pd.ExcelWriter(join(results_dir,test_session_name + '_volume_threshold_analysis_'+ date +'.xlsx')) as writer:
         df_merged.to_excel(writer, sheet_name = 'Threshold Analysis')
                 
 
@@ -75,10 +75,10 @@ def analyze_volume_thresholds_results(results_dir, volume_threshold_2,test_sessi
 
 
 
-#Example
-#analyze_volume_thresholds_results(results_dir =  '/Volumes/Youpele_HD/Uniklinik/Scripts/Prostate/ml',
-#                                  volume_threshold_2 = 1,
-#                                  test_session_name = 'stone_phlebolith')
+# Example
+# analyze_volume_thresholds_results(results_dir =  '/Volumes/Youpele_HD/Uniklinik/Scripts/Prostate/ml',
+#                                   volume_threshold_2 = 1,
+#                                   test_session_name = 'stone_phlebolith')
     
  
 
