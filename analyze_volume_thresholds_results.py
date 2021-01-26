@@ -75,10 +75,10 @@ def analyze_volume_thresholds_results(results_dir, volume_threshold_2,test_sessi
 
 
 
-Example
-analyze_volume_thresholds_results(results_dir =  '/Volumes/Youpele_HD/Uniklinik/Scripts/Prostate/ml',
-                                  volume_threshold_2 = 1,
-                                  test_session_name = 'stone_phlebolith')
+#Example
+#analyze_volume_thresholds_results(results_dir =  '/Volumes/Youpele_HD/Uniklinik/Scripts/Prostate/ml',
+#                                  volume_threshold_2 = 1,
+#                                  test_session_name = 'stone_phlebolith')
     
  
 
