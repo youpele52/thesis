@@ -17,6 +17,28 @@ join = os.path.join
 
 
 def normalization (image_path, export_dir, export_name, create_mask = True, threshold = -900):
+    # NOTE: if the script does not work, remove the entire docstring below.
+    '''
+    Creates a normalized image from a given image, and optionally a ROI mask for the image.
+
+    Parameters
+    ----------
+    image_path : str
+        Path to the image.
+    export_dir : str
+        Path to folder in which the created normalized image and ROI mask will be saved.
+    export_name : str
+        Name of the output image.
+    create_mask: Boolean, Default is True
+        Set to False, if you do not want a ROI mask.
+    threshold: int, Default is -900
+        Image intensity threshold used in creating the normalised image as well as the ROI mask.
+
+    Returns
+    -------
+    None.
+
+    '''
     
     print("Processing:", image_path)
     img = nib.load(image_path)

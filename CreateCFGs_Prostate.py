@@ -16,6 +16,29 @@ join = os.path.join
 
 
 def create_prostate_cfgs(main_dir, export_dir, search_term  ):
+    # NOTE: if the script does not work, remove the entire docstring below.
+    '''
+    Creates GtLabels, Channels_t2grase, RoiMasks, Channels_t2tse, Channels_adc and NamesOfPredictions CFG files.
+    The created CFG files will contain list of paths. 
+    Example: GtLabels.cfg will contain a list of paths for all the GT files.
+    
+    Parameters
+    ----------
+    main_dir : String
+        Path to the main folder which contains all the patients' folder. Each patient's folder
+        should contain Gtlabels_T2TSE, T2GraSe, ROI_T2TSE etc files. 
+    export_dir : String
+        Path to the folder in which the created CFG files will be saved.
+    search_term : String
+        In cases where there are mutiple Gtlabels_T2TSEs, search_term is used to 
+        specify the exact one needed. 
+        Example: search_term = '03032021', if date is used to distinguish the different Gtlabels_T2TSEs.
+
+    Returns
+    -------
+    None.
+
+    '''
 
     # todays_date = datetime.now().strftime('%d%m20%y')
     dir_name = main_dir.split('/')[-1]

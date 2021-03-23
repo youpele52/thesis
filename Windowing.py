@@ -16,6 +16,28 @@ import os
 
 class Windowing():
     def windowing(image_path, window_center, window_width, export_dir, export_name):
+        # NOTE: If the script does not work, remove the entire docstring below.
+        '''
+        Creates a normalized image from a given image, and optionally a ROI mask for the image.
+    
+        Parameters
+        ----------
+        image_path : str
+            Path to the image.
+        window_center: int
+            Window center is sometimes referred to as window length. 
+            
+        window_width: int
+        
+        export_dir: str
+            Folder path in which the created windowed image will be saved.
+        export_name: str
+            Name of the output image.
+        Returns
+        -------
+        None.
+    
+        '''
         
         medical_image = nib.load(image_path)
         image = medical_image.get_fdata()
@@ -49,6 +71,20 @@ class Windowing():
         print("Windowing successful.\nThe windowed image can be found here: ", str(os.path.join(export_dir, export_name)))
         
     def display_views(image_path):
+        # NOTE: if the script does not work, remove the entire docstring below.
+        '''
+        Visualizes the image in 2D.
+        
+        Parameters
+        ----------
+        image_path : str
+            Path to the image.
+        
+        Returns
+        -------
+        None.
+    
+        '''
     
         image_axis = 2
         medical_image = nib.load(image_path)
