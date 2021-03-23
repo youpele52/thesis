@@ -11,6 +11,26 @@ import SimpleITK as sitk
 
 def resample(image_path, out_image_path,
                  out_spacing=[0.75, 0.75, 1], is_label=False):
+    # NOTE: if the script does not work, remove the entire docstring below.
+    '''
+    Resamples a given image.
+
+    Parameters
+    ----------
+    image_path : str
+        Path to the image.
+    out_image_path: str
+        Path to folder in which the resampled image will be saved.
+    out_spacing: list, Default is [0.75, 0.75, 1]
+        List containing three numbers that will be used to resample the image in x, y and z axis.
+    is_label: Boolean, Default is False.
+        If the image is a label, sitk.sitkNearestNeighbor is used to interpolate the image, else sitk.sitkBSpline is used.
+    
+    Returns
+    -------
+    None.
+
+    '''
     
     itk_image = sitk.ReadImage(image_path)
     
